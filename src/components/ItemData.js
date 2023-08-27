@@ -1,23 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import ItemDisplay from "./ItemDisplay";
 
-const ItemData = ({ items }) => {
+const ItemData = (props) => {
   let content = <p>값이 없습니다.</p>;
-  if (items.length > 0) {
-    content = items.map((item) => (
-      <div className="item-data">
-        <div>id: {item.id}/</div>
-        <div>이름: {item.name}/</div>
-        <div>가격: {item.price}/</div>
-        <div>유형: {item.type}/</div>
-        <div>
-          구입 날짜: {new Date(item.date).getFullYear()}년
-          {new Date(item.date).getMonth() + 1}월{new Date(item.date).getDate()}
-          일/
-        </div>
-        <div>메모: {item.memo}/</div>
-        <div>재구매 의사: {item.repurchase}</div>
-        <button>삭제</button>
-      </div>
+  if (props.sortedItems.length > 0) {
+    content = props.sortedItems.map((item) => (
+      <ItemDisplay
+        key={item.id}
+        id={item.id}
+        name={item.name}
+        price={item.price}
+        type={item.type}
+        date={item.date}
+        memo={item.memo}
+        repurchase={item.repurchase}
+        deleteItem={props.deleteItem}
+      />
     ));
   }
   return <div>{content}</div>;
