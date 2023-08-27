@@ -22,7 +22,7 @@ const Dropbox = (props) => {
   const renderedOptions = props.options.map((option) => {
     return (
       <div
-        className="dropdown-options"
+        className={option.className}
         key={option.value}
         onClick={() => handleSelect(option)}
       >
