@@ -1,8 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Dropbox from "./components/Dropbox";
 import { useState } from "react";
-import ItemData from "./components/ItemData";
 import Form from "./components/Form";
 import Filter from "./components/Filter";
 
