@@ -82,6 +82,7 @@ const Form = ({ options, getItemData }) => {
             id="name"
             value={objectState.name}
             onChange={nameChange}
+            // required
           />
         </div>
         <div className="price">
@@ -92,6 +93,7 @@ const Form = ({ options, getItemData }) => {
             id="price"
             value={objectState.price}
             onChange={priceChange}
+            // required
           />
         </div>
         <div className="type">
@@ -107,6 +109,7 @@ const Form = ({ options, getItemData }) => {
             id="date"
             value={objectState.date}
             onChange={dateChange}
+            // required
           />
         </div>
 
