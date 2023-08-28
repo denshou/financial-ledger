@@ -78,10 +78,6 @@ const Filter = ({ options, items, deleteItem }) => {
     });
   }
 
-  console.log(new Date(sortDate.startDate)); // 2023-8-10
-  console.log(items[0].date);
-  console.log(new Date(sortDate.startDate) > items[0].date);
-
   if (sortDate.startDate) {
     sortedItems = sortedItems.filter((expense) => {
       let from = new Date(sortDate.startDate);

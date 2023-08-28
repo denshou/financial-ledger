@@ -49,7 +49,7 @@ function App() {
         name: data.name,
         price: data.price,
         type: data.type,
-        date: data.date,
+        date: new Date(data.date).setHours(0, 0, 0, 0),
         memo: data.memo,
         repurchase: data.repurchase,
       },
