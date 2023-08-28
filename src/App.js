@@ -21,7 +21,7 @@ function App() {
       type: "drink",
       date: new Date(2023, 7, 26),
       memo: "코카콜라",
-      repurchase: false,
+      repurchase: "false",
     },
     {
       id: "e2",
@@ -30,7 +30,7 @@ function App() {
       type: "drink",
       date: new Date(2023, 7, 28),
       memo: "칠성사이다",
-      repurchase: true,
+      repurchase: "true",
     },
     {
       id: "e3",
@@ -39,7 +39,7 @@ function App() {
       type: "favoritefood",
       date: new Date(2023, 7, 29),
       memo: "츄파춥스",
-      repurchase: true,
+      repurchase: "true",
     },
   ]);
   const getItemData = (data) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Dropbox from "./Dropbox";
-import ItemData from './ItemData';
+import ItemData from "./ItemData";
 
 const Filter = ({ options, items, deleteItem }) => {
   const [sortBy, setSortBy] = useState(null);
@@ -9,24 +9,24 @@ const Filter = ({ options, items, deleteItem }) => {
   const sort = [
     { label: "가격 높은 순", value: "price-desc", className: "first" },
     { label: "가격 낮은 순", value: "price-asc", className: "second" },
+    { label: "최신 순", value: "date-desc", className: "third" },
+    { label: "오래된 순", value: "date-asc", className: "fourth" },
   ];
   const [sortDate, setSortDate] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: new Date(1990, 1, 1),
+    endDate: new Date(2500, 12, 31),
   });
   const startChange = (event) => {
     setSortDate((prevState) => ({
       ...prevState,
       startDate: event.target.value,
     }));
-    console.log(sortDate);
   };
   const endChange = (event) => {
     setSortDate((prevState) => ({
       ...prevState,
       endDate: event.target.value,
     }));
-    console.log(sortDate);
   };
 
   //   const filterChangeHandler = () => {};
@@ -37,34 +37,66 @@ const Filter = ({ options, items, deleteItem }) => {
     else if (data === "grocery") setSortBy(data);
     else if (data === "drink") setSortBy(data);
     else if (data === "favoritefood") setSortBy(data);
+    else if (data === "date-desc") setSortOrder(data);
+    else if (data === "date-asc") setSortOrder(data);
   };
 
   let sortedItems = items;
-  if (!sortBy && !sortOrder) console.log(sortedItems);
+
+  if (!sortBy && !sortOrder) console.log();
   else if (sortBy && !sortOrder) {
     sortedItems = items.filter((expense) => {
       return expense.type === sortBy;
     });
-    console.log(sortedItems);
   } else if (!sortBy && sortOrder === "price-asc") {
     sortedItems.sort((a, b) => a.price - b.price);
-    console.log(sortedItems);
   } else if (!sortBy && sortOrder === "price-desc") {
     sortedItems.sort((a, b) => b.price - a.price);
-    console.log(sortedItems);
+  } else if (!sortBy && sortOrder === "date-asc") {
+    sortedItems.sort((a, b) => a.date - b.date);
+  } else if (!sortBy && sortOrder === "date-desc") {
+    sortedItems.sort((a, b) => b.date - a.date);
   } else if (sortBy && sortOrder === "price-asc") {
     sortedItems.sort((a, b) => a.price - b.price);
     sortedItems = items.filter((expense) => {
       return expense.type === sortBy;
     });
-    console.log(sortedItems);
   } else if (sortBy && sortOrder === "price-desc") {
     sortedItems.sort((a, b) => b.price - a.price);
     sortedItems = items.filter((expense) => {
       return expense.type === sortBy;
     });
-    console.log(sortedItems);
+  } else if (sortBy && sortOrder === "date-asc") {
+    sortedItems.sort((a, b) => a.date - b.date);
+    sortedItems = items.filter((expense) => {
+      return expense.type === sortBy;
+    });
+  } else if (sortBy && sortOrder === "date-desc") {
+    sortedItems.sort((a, b) => b.date - a.date);
+    sortedItems = items.filter((expense) => {
+      return expense.type === sortBy;
+    });
   }
+
+  console.log(new Date(sortDate.startDate)); // 2023-8-10
+  console.log(items[0].date);
+  console.log(new Date(sortDate.startDate) > items[0].date);
+
+  if (sortDate.startDate) {
+    sortedItems = sortedItems.filter((expense) => {
+      let from = new Date(sortDate.startDate);
+      from.setHours(from.getHours() - 9);
+      return expense.date >= from;
+    });
+  }
+  if (sortDate.endDate) {
+    sortedItems = sortedItems.filter((expense) => {
+      let to = new Date(sortDate.endDate);
+      to.setHours(to.getHours() - 9);
+      return expense.date <= to;
+    });
+  }
+  // if(new Date(sortDate.startDate)){}
 
   return (
     <div>

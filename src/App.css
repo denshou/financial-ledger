@@ -80,6 +80,14 @@
   background-color: white;
   height: 1.5rem;
 }
+.fourth {
+  border: 1px solid black;
+  position: absolute;
+  margin-top: 4.5rem;
+  width: 4rem;
+  background-color: white;
+  height: 1.5rem;
+}
 .type {
   display: flex;
 }
