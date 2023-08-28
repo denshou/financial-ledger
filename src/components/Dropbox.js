@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { styled } from "styled-components";
 
 const Dropbox = (props) => {
   const [isOpen, setIsOpen] = useState(false);
